@@ -20,13 +20,9 @@ const students = [
   { id: 10, name: "Neha Gupta", branch: "CSE", semester: 6, cgpa: 7.9 }
 ];
 
-
-
 app.get("/students", (req, res) => {
   res.status(200).json(students);
 });
-
-
 
 app.get("/students/topper", (req, res) => {
   if (students.length === 0) {
@@ -43,7 +39,6 @@ app.get("/students/topper", (req, res) => {
 
   res.status(200).json(topper);
 });
-
 
 
 app.get("/students/average", (req, res) => {
@@ -73,7 +68,6 @@ app.get("/students/count", (req, res) => {
 });
 
 
-
 app.get("/students/branch/:branchName", (req, res) => {
   const branchName = req.params.branchName.toLowerCase();
 
@@ -85,6 +79,13 @@ app.get("/students/branch/:branchName", (req, res) => {
 });
 
 
+app.get("/students/semester4", (req, res) => {
+  const filteredStudents = students.filter(
+    student => student.semester === 4
+  );
+
+  res.status(200).json(filteredStudents);
+});
 
 app.get("/students/:id", (req, res) => {
   const id = parseInt(req.params.id);
